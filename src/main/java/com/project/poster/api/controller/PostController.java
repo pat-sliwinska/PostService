@@ -17,8 +17,8 @@ public class PostController {
 
     private final Pipeline pipeline;
 
-    @GetMapping("save")
-    List<PostDto> savePosts() {
+    @GetMapping
+    List<PostDto> getPosts() {
         return pipeline.send(new PostsQuery());
     }
 

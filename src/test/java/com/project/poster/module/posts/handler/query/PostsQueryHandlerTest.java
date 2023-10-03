@@ -1,8 +1,10 @@
 package com.project.poster.module.posts.handler.query;
 
 import com.project.poster.module.posts.dto.PostDto;
+import com.project.poster.module.posts.mapper.CommentMapper;
 import com.project.poster.module.posts.mapper.PostMapper;
 import com.project.poster.module.posts.mapper.PostMapperImpl;
+import com.project.poster.module.posts.service.CommentService;
 import com.project.poster.module.posts.service.PostService;
 import com.project.poster.shared.clients.json.placeholder.model.PostResponse;
 import org.assertj.core.util.Lists;
@@ -27,14 +29,20 @@ class PostsQueryHandlerTest {
     @Mock
     private PostService postService;
 
+    @Mock
+    private CommentService commentService;
+
     @Autowired
     private PostMapper postMapper;
+
+    @Autowired
+    private CommentMapper commentMapper;
 
     private PostsQueryHandler postsQueryHandler;
 
     @BeforeEach
     void setUp() {
-        postsQueryHandler = new PostsQueryHandler(postService, postMapper);
+        postsQueryHandler = new PostsQueryHandler(postService, commentService, postMapper, commentMapper);
     }
 
     @Test

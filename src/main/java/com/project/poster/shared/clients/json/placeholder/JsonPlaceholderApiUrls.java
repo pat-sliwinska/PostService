@@ -16,4 +16,7 @@ public class JsonPlaceholderApiUrls {
         return clientUrl + "/posts";
     }
 
+    public String getCommentsUrl(Long id) {
+        return clientUrl + "/posts/%s/comments".formatted(id);
+    }
 }
